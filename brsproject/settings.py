@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'brsapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTH_USER_MODEL = 'brsapp.User'
 
 ROOT_URLCONF = 'brsproject.urls'
 
@@ -74,9 +77,14 @@ WSGI_APPLICATION = 'brsproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'brs_database',
+        'USER': 'postgres',
+        'PASSWORD': 'ry54',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
+
 }
 
 
