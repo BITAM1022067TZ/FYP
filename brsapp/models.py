@@ -29,11 +29,10 @@ class Route(models.Model):
 class Bus(models.Model):  
     name = models.CharField(max_length=100)
     total_seats = models.IntegerField()
-    route = models.ForeignKey(Route, on_delete=models.SET_NULL, null=True, blank=True)
+    route = models.ManyToManyField(Route)
     
     def __str__(self):
         return f"{self.name}"
-
 
 
 class Ticket(models.Model):
