@@ -54,3 +54,26 @@ manage_route = generic_crud_view(Route, RouteSerializer)
 manage_bus = generic_crud_view(Bus, BusSerializer)
 manage_ticket = generic_crud_view(Ticket, TicketSerializer)
 manage_payment = generic_crud_view(Payment, PaymentSerializer)
+
+
+
+# users/views.py
+
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomTokenObtainPairSerializer
+
+class CustomLoginView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
+
+
+
+from rest_framework import generics
+from .serializers import UserRegistrationSerializer
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class RegisterUserView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRegistrationSerializer
+

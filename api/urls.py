@@ -1,5 +1,11 @@
-from brsapp.views import manage_user, manage_route, manage_bus, manage_ticket, manage_payment
+from brsapp.views import *
 from django.urls import path
+
+# users/urls.py
+
+from django.urls import path
+from brsapp.views import CustomLoginView
+
 
 urlpatterns = [
     path('user/', manage_user),
@@ -16,4 +22,8 @@ urlpatterns = [
 
     path('payment/', manage_payment),
     path('payment/<int:pk>/', manage_payment),
+
+    path('login/', CustomLoginView.as_view(), name='custom_login'),
+
+    path('register-user/', RegisterUserView.as_view(), name='register'),
 ]
